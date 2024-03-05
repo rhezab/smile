@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-import RandomSubTimeline from '@/subtimeline'
-import { RandomizeSubTimeline } from '@/subtimeline'
-import Timeline from '@/timeline'
+import RandomSubTimeline from '@/core/subtimeline'
+import { RandomizeSubTimeline } from '@/core/subtimeline'
+import Timeline from '@/core/timeline'
 import { createTestingPinia } from '@pinia/testing'
 import useSmileStore from '@/stores/smiledata'
 import { createRouter, createWebHashHistory } from 'vue-router'

@@ -1,10 +1,10 @@
 <script setup>
+import { onMounted, watch, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import useSmileStore from '@/stores/smiledata'
 // load sub-components used in this compomnents
 import DeveloperNavBar from '@/components/navbars/DeveloperNavBar.vue'
 import StatusBar from '@/components/navbars/StatusBar.vue'
-import { onMounted, watch, ref } from 'vue'
 import PresenationNavBar from '@/components/navbars/PresentationNavBar.vue'
 import ProgressBar from './components/navbars/ProgressBar.vue'
 

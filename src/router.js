@@ -1,13 +1,13 @@
 // import { ref } from 'vue'
-import '@/seed'
+import '@/core/seed'
 import seedrandom from 'seedrandom'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { v4 as uuidv4 } from 'uuid'
 import useSmileStore from '@/stores/smiledata' // get access to the global store
 import appconfig from '@/config'
-import { processQuery, getQueryParams } from '@/utils'
-import Timeline from '@/timeline'
-import RandomSubTimeline from '@/subtimeline'
+import { processQuery, getQueryParams } from '@/core/utils'
+import Timeline from '@/core/timeline'
+import RandomSubTimeline from '@/core/subtimeline'
 
 // 1. Import route components
 import RecruitmentChooser from '@/components/recruitment/RecruitmentChooserPage.vue'

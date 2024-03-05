@@ -9,6 +9,7 @@ function parse_w_h(value) {
   const w_h = value.split('x')
   return { width: `${w_h[0]}px`, height: `${w_h[1]}px` }
 }
+
 export default {
   mode: import.meta.env.MODE,
   project_name: import.meta.env.VITE_PROJECT_NAME, // autocompute this on intitialization

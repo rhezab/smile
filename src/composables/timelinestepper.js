@@ -1,4 +1,4 @@
-import { RandomizeSubTimeline } from '@/subtimeline'
+import { RandomizeSubTimeline } from '@/core/subtimeline'
 import { useRoute, useRouter } from 'vue-router'
 import useSmileStore from '@/stores/smiledata'
 import _ from 'lodash'
