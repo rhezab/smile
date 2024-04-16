@@ -27,6 +27,7 @@ import Config from '@/components/config/ConfigPage.vue'
 import Withdraw from '@/components/errors_withdraw/WithdrawPage.vue'
 import WindowSizer from '@/components/screen_adjust/WindowSizerPage.vue'
 // add new routes here.  generally these will be things in components/pages/[something].vue
+import WaitingRoom from '@/components/waiting_room/WaitingRoom.vue'
 
 // 2. Define some routes to the timeline
 // Each route should map to a component.
@@ -90,6 +91,13 @@ timeline.pushSeqRoute({
   path: '/consent',
   name: 'consent',
   component: Consent,
+})
+
+// waiting room
+timeline.pushSeqRoute({
+    path: '/waitingroom',
+    name: 'waitingroom',
+    component: WaitingRoom
 })
 
 // demographic survery

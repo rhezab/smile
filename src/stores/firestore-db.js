@@ -13,6 +13,7 @@ import {
 } from 'firebase/firestore'
 import { split } from 'lodash'
 import appconfig from '@/config'
+import { getDatabase, ref } from "firebase/database"; // for rtdb
 
 // initialize firebase connection
 // since this is a module these will run once at the start
@@ -36,6 +37,11 @@ if (appconfig.mode === 'development' || appconfig.mode === 'testing') {
 }
 
 export const fsnow = () => Timestamp.now()
+
+// for rtdb
+export const useDB = doc(db, `${mode}/${appconfig.project_ref}/`) // firestore
+export const rtdb = getDatabase(firebaseApp) // rtdb
+export const rtdb_path = `${appconfig.project_ref}/`; // path to rtdb
 
 // create a collection
 export const updateSubjectDataRecord = (data, docid) => {
