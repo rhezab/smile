@@ -10,6 +10,7 @@ import {
   balancedAssignConditions,
   loadDoc,
   fsnow,
+  getRTDB
 } from './firestore-db'
 import sizeof from 'firestore-size'
 
@@ -46,6 +47,8 @@ export default defineStore('smilestore', {
         seedSet: false,
         pageTracker: {},
         possibleConditions: { taskOrder: ['AFirst', 'BFirst'], instructions: ['version1', 'version2', 'version3'] },
+        rtdb: null,
+        rtdb_path: null
       },
       localStorage,
       { mergeDefaults: true }
@@ -132,6 +135,9 @@ export default defineStore('smilestore', {
   },
 
   actions: {
+    setRTDB() {
+        [this.local.rtdb, this.local.rtdb_path] = getRTDB()
+    },
     setDBConnected() {
       this.global.db_connected = true
     },

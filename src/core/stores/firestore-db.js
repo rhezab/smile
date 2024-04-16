@@ -37,6 +37,14 @@ if (appconfig.mode === 'development' || appconfig.mode === 'testing') {
 
 export const fsnow = () => Timestamp.now()
 
+// function for getting rtdb stuff
+import { getDatabase, ref } from "firebase/database"
+export const getRTDB = () => {
+    const rtdb = getDatabase(firebaseApp) // rtdb
+    const rtdb_path = `${appconfig.project_ref}/`; // path to rtdb
+    return [rtdb, rtdb_path]
+}
+
 // create a collection
 export const updateSubjectDataRecord = async (data, docid) => {
   // is it weird to have a aync method that doesn't return anything?
