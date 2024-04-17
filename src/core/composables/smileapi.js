@@ -15,6 +15,7 @@ export default function useSmileAPI() {
   const router = useRouter()
   const smilestore = useSmileStore()
   const api = {
+    smilestore: smilestore, 
     config: smilestore.config,
     data: smilestore.data,
     local: smilestore.local,

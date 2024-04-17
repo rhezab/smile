@@ -3,6 +3,19 @@ import { useStorage } from '@vueuse/core'
 import axios from 'axios'
 import appconfig from '@/core/config'
 
+// rtdb stuff
+import {
+    set,
+    get,
+    child,
+    ref as rtref,
+    remove,
+    serverTimestamp,
+    onDisconnect,
+    onValue,
+    update,
+  } from "firebase/database";
+
 import {
   createDoc,
   updateSubjectDataRecord,
@@ -135,9 +148,67 @@ export default defineStore('smilestore', {
   },
 
   actions: {
-    setRTDB() {
-        [this.local.rtdb, this.local.rtdb_path] = getRTDB()
+    /* begin new */
+    rtdbRunTransaction(ref, transactionUpdate) {
+        return runTransaction(ref, transactionUpdate)
+          .then(({ committed, snapshot }) => {
+            if (committed) {
+              console.log('Transaction committed!');
+              console.log('New value: ', snapshot.val());
+            } else {
+              console.log('Transaction not committed');
+            }
+          })
+          .catch((error) => {
+            console.error('Transaction failed: ', error);
+          });
     },
+    rtdbOnValue(ref, callback) {
+        /* 
+        Sets up a listener at the specified reference in the Realtime Database.
+        The callback function will be called each time the data changes.
+        Use like:
+      
+        smilestore.rtdbOnValue(ref, (snapshot) => {
+          ...
+        });
+        */
+        return onValue(ref, callback);
+    },
+    rtdbGet(ref) {
+      /* 
+      Returns a promise that resolves with a DataSnapshot.
+      Use like:
+
+      const promise = smilestore.rtdbGet(path)
+      promise.then((snapshot) => {
+        ...
+      })
+      */ 
+      return get(ref)
+    },
+    rtdbRemove(ref) {
+      // equivalent to set(ref, null)
+      remove(ref)
+    },
+    rtdbUpdate(ref, value) {
+        update(ref, value)
+    },
+    rtdbSet(ref, value) {
+      set(ref, value)
+    },
+    rtdbChild(ref, path) {
+      // gets child ref from parent ref, given additional path
+      return child(ref, path)
+    },
+    rtdbRef(path) {
+      /* returns a ref to use with methods like set, get, etc. */
+      return rtref(this.rtdb, path)
+    },
+    setRTDB() {
+      [this.local.rtdb, this.local.rtdb_path] = getRTDB()
+    },
+    /* end new */
     setDBConnected() {
       this.global.db_connected = true
     },

@@ -19,6 +19,7 @@ import Thanks from '@/components/thanks/ThanksPage.vue'
 import Withdraw from '@/components/errors_withdraw/WithdrawPage.vue'
 import WindowSizer from '@/components/screen_adjust/WindowSizerPage.vue'
 // add new routes here.  generally these will be things in components/pages/[something].vue
+import RtdbTest from '@/components/tasks/RtdbTestPage.vue'
 
 import useSmileAPI from '@/core/composables/smileapi'
 const api = useSmileAPI()
@@ -125,6 +126,13 @@ timeline.pushSeqRoute({
   name: 'instructions',
   component: Instructions,
 })
+
+// rtdb test page
+timeline.pushSeqRoute({
+    path: '/rtdb',
+    name: 'rtdb',
+    component: RtdbTest,
+  })
 
 // main experiment
 timeline.pushSeqRoute({
